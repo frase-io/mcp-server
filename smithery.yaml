@@ -1,0 +1,18 @@
+startCommand:
+  type: stdio
+  configSchema:
+    type: object
+    properties:
+      FRASE_API_KEY:
+        type: string
+        description: "Your Frase API key from Settings > API (https://next.frase.io/settings/api)"
+    required:
+      - FRASE_API_KEY
+  commandFunction: |-
+    (config) => ({
+      command: 'npx',
+      args: ['-y', '@frase/mcp-server'],
+      env: {
+        FRASE_API_KEY: config.FRASE_API_KEY
+      }
+    })
