@@ -13,7 +13,7 @@
 
 Why run it from an agent? Stacks that research in one tool, draft in another, and publish in a third lose context at every hop. Frase keeps research, drafts, scores, and publishing in one system — so your agent works with full context instead of copy-paste.
 
-**New to Frase?** The server connects to your Frase account. [Start a free 7-day trial](https://www.frase.io/?utm_source=github&utm_medium=readme&utm_campaign=mcp-server) (no credit card), then grab your API key from [Settings → API](https://next.frase.io/settings/api).
+**New to Frase?** The server connects to your Frase account. [Start a free 7-day trial](https://www.frase.io/?utm_source=github&utm_medium=readme&utm_campaign=mcp-server) (no credit card), then grab your API key from [Settings → API](https://next.frase.io/settings/api-keys).
 
 ## What is MCP?
 
@@ -28,7 +28,7 @@ Why run it from an agent? Stacks that research in one tool, draft in another, an
 1. Download the latest `frase-x.x.x.mcpb` file from [Releases](https://github.com/frase-io/mcp-server/releases)
 2. Open Claude Desktop and go to **Settings**
 3. Drag the `.mcpb` file into the Settings window (or use **Install Extension**)
-4. Enter your Frase API key when prompted (get it from [Frase Settings](https://next.frase.io/settings/api))
+4. Enter your Frase API key when prompted (get it from [Frase Settings](https://next.frase.io/settings/api-keys))
 5. Done — Claude can now access your Frase account
 
 ### Option B: Claude Code (CLI)
@@ -45,7 +45,7 @@ Claude Code will automatically start the server when needed.
 
 #### 1. Get your API key
 
-Get your API key from [Frase Settings](https://next.frase.io/settings/api).
+Get your API key from [Frase Settings](https://next.frase.io/settings/api-keys).
 
 #### 2. Configure Claude Desktop
 
