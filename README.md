@@ -1,9 +1,19 @@
-# @frase/mcp-server
+# Frase MCP Server
 
 [![npm version](https://img.shields.io/npm/v/@frase/mcp-server.svg)](https://www.npmjs.com/package/@frase/mcp-server)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-Use Claude to interact with your Frase account. This MCP (Model Context Protocol) server exposes Frase's API as tools that Claude can use to help you with SEO/GEO content creation, research, optimization, AI Visibility tracking, and much more. Works with both Claude Desktop and Claude Code.
+**The content loop, run from your AI agent.** This MCP (Model Context Protocol) server connects Claude, Cursor, Windsurf, VS Code, or any MCP client to [Frase](https://www.frase.io/agents?utm_source=github&utm_medium=readme&utm_campaign=mcp-server), the content operating system for AI search. Frase runs the loop content teams use to win Google rankings and AI citations, and this server puts that loop in your agent's hands:
+
+- **Research** what ranks and why: live SERP analysis, competitor breakdowns, topic clusters
+- **Create** briefs and drafts grounded in that research, in your brand voice
+- **Publish** straight to WordPress, Sanity, Webflow, Wix, or FraseCMS
+- **Optimize** every page for Google rankings and AI citations (ChatGPT, Perplexity, Gemini, Google AI) together
+- **Track & fix**: audit sites for decay and cannibalization, watch where AI engines cite you (and where they cite competitors instead), and surface the pages that need attention next
+
+Why run it from an agent? Stacks that research in one tool, draft in another, and publish in a third lose context at every hop. Frase keeps research, drafts, scores, and publishing in one system — so your agent works with full context instead of copy-paste.
+
+**New to Frase?** The server connects to your Frase account. [Start a free 7-day trial](https://www.frase.io/?utm_source=github&utm_medium=readme&utm_campaign=mcp-server) (no credit card), then grab your API key from [Settings → API](https://next.frase.io/settings/api).
 
 ## What is MCP?
 
@@ -12,6 +22,8 @@ Use Claude to interact with your Frase account. This MCP (Model Context Protocol
 ## Quick Start
 
 ### Option A: One-Click Install (Desktop Extension)
+
+> Desktop extension bundles are published on the [Releases](https://github.com/frase-io/mcp-server/releases) page. If no release is listed yet, use Option B or C below — same server, two commands.
 
 1. Download the latest `frase-x.x.x.mcpb` file from [Releases](https://github.com/frase-io/mcp-server/releases)
 2. Open Claude Desktop and go to **Settings**
@@ -113,6 +125,34 @@ Add to your VS Code settings (`.vscode/settings.json`):
   }
 }
 ```
+
+## Prompts you can try
+
+Once connected, ask your agent:
+
+- **Run the whole loop on one topic**
+  > "Research 'ai visibility tools' in Frase, build a brief from the top competitors, draft the article in our brand voice, and publish it as a draft to our FraseCMS site."
+
+- **See where AI cites you (and where it doesn't)**
+  > "Check our AI visibility for our main product queries. Which prompts cite us, which cite competitors, and what changed this week?"
+
+- **Find what's decaying before it costs traffic**
+  > "Audit frase.io for content decay and cannibalization, and rank the fixes by likely traffic impact."
+
+- **Turn a research session into a publishable draft**
+  > "Take my latest research session, generate an outline, and score the draft for both Google rankings and AI citations before I review it."
+
+Your agent stays in control of nothing it shouldn't: every write goes to your account, drafts stay drafts until you publish, and the API key never leaves your local config.
+
+## Why run Frase from an agent?
+
+Most content stacks research in one tool, write in another, optimize in a third, and publish in a fourth. Every hop loses context: the SERP data behind a brief, the reasoning behind an optimization, the research behind a page. Frase keeps the loop in one system, so an agent working through this server has the full picture at every step:
+
+- **Research → Create:** briefs are grounded in live SERP and competitor analysis your agent just ran, not pasted-in fragments.
+- **Create → Publish:** drafts go straight to WordPress, Sanity, Webflow, Wix, or FraseCMS — and FraseCMS keeps the research attached to the page it produced.
+- **Publish → Optimize → Fix:** published pages get scored for Google and AI citations, audited for decay, and tracked in AI answers, all through the same tools — so the next piece of work starts from what the last one learned.
+
+You review and approve; the agent does the legwork. That is the working model across Frase — agent-native by design, human-in-the-loop by default.
 
 ## Available Tools
 
