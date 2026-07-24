@@ -1,9 +1,17 @@
-# @frase/mcp-server
+# Frase MCP Server
 
 [![npm version](https://img.shields.io/npm/v/@frase/mcp-server.svg)](https://www.npmjs.com/package/@frase/mcp-server)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-Use Claude to interact with your Frase account. This MCP (Model Context Protocol) server exposes Frase's API as tools that Claude can use to help you with SEO/GEO content creation, research, optimization, AI Visibility tracking, and much more. Works with both Claude Desktop and Claude Code.
+**Run your whole SEO workflow from your AI agent.** This MCP (Model Context Protocol) server connects Claude, Cursor, Windsurf, VS Code, or any MCP client to [Frase](https://www.frase.io/agents?utm_source=github&utm_medium=readme&utm_campaign=mcp-server), so your agent can:
+
+- **Research** what ranks — live SERP analysis, competitor breakdowns, content briefs
+- **Write and optimize** content scored for Google rankings and AI citations together
+- **Publish** to WordPress, Sanity, Webflow, Wix, or FraseCMS
+- **Track AI visibility** — see where ChatGPT, Perplexity, Gemini, and Google AI cite you (and where they cite competitors instead)
+- **Audit** any site for content decay, cannibalization, and AI-readiness
+
+**New to Frase?** The server connects to your Frase account. [Start a free 7-day trial](https://www.frase.io/?utm_source=github&utm_medium=readme&utm_campaign=mcp-server) (no credit card), then grab your API key from [Settings → API](https://next.frase.io/settings/api).
 
 ## What is MCP?
 
