@@ -322,6 +322,12 @@ Pre-built workflows for common SEO tasks:
 | `content_pipeline` | Full autonomous content lifecycle: research, brief, write, optimize, publish |
 | `content_watchdog` | Monitor performance, fix ranking drops, re-optimize underperforming content |
 
+## Test mode
+
+Frase issues test API keys (`sk_test_...`) alongside live keys. A test key lets you — or your agent — dry-run the full integration without consuming credits or touching live content: run research, create briefs, score drafts, and exercise every tool call end-to-end, then swap to your `sk_live_` key when the workflow is proven. Get both key types from [Settings → API Keys](https://next.frase.io/settings/api-keys).
+
+If you are building an agent workflow, start with the test key. An agent that can rehearse a request before spending money completes integrations faster and makes fewer expensive mistakes.
+
 ## Configuration
 
 | Variable | Required | Description |
