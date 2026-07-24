@@ -126,6 +126,34 @@ Add to your VS Code settings (`.vscode/settings.json`):
 }
 ```
 
+## Prompts you can try
+
+Once connected, ask your agent:
+
+- **Run the whole loop on one topic**
+  > "Research 'ai visibility tools' in Frase, build a brief from the top competitors, draft the article in our brand voice, and publish it as a draft to our FraseCMS site."
+
+- **See where AI cites you (and where it doesn't)**
+  > "Check our AI visibility for our main product queries. Which prompts cite us, which cite competitors, and what changed this week?"
+
+- **Find what's decaying before it costs traffic**
+  > "Audit frase.io for content decay and cannibalization, and rank the fixes by likely traffic impact."
+
+- **Turn a research session into a publishable draft**
+  > "Take my latest research session, generate an outline, and score the draft for both Google rankings and AI citations before I review it."
+
+Your agent stays in control of nothing it shouldn't: every write goes to your account, drafts stay drafts until you publish, and the API key never leaves your local config.
+
+## Why run Frase from an agent?
+
+Most content stacks research in one tool, write in another, optimize in a third, and publish in a fourth. Every hop loses context — the SERP data behind a brief, the reasoning behind an optimization, the research behind a page. Frase keeps the loop in one system, so an agent working through this server has the full picture at every step:
+
+- **Research → Create:** briefs are grounded in live SERP and competitor analysis your agent just ran, not pasted-in fragments.
+- **Create → Publish:** drafts go straight to WordPress, Sanity, Webflow, Wix, or FraseCMS — and FraseCMS keeps the research attached to the page it produced.
+- **Publish → Optimize → Fix:** published pages get scored for Google and AI citations, audited for decay, and tracked in AI answers, all through the same tools — so the next piece of work starts from what the last one learned.
+
+You review and approve; the agent does the legwork. That is the working model across Frase — agent-native by design, human-in-the-loop by default.
+
 ## Available Tools
 
 ### Sites
