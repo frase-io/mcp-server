@@ -146,7 +146,7 @@ Your agent stays in control of nothing it shouldn't: every write goes to your ac
 
 ## Why run Frase from an agent?
 
-Most content stacks research in one tool, write in another, optimize in a third, and publish in a fourth. Every hop loses context — the SERP data behind a brief, the reasoning behind an optimization, the research behind a page. Frase keeps the loop in one system, so an agent working through this server has the full picture at every step:
+Most content stacks research in one tool, write in another, optimize in a third, and publish in a fourth. Every hop loses context: the SERP data behind a brief, the reasoning behind an optimization, the research behind a page. Frase keeps the loop in one system, so an agent working through this server has the full picture at every step:
 
 - **Research → Create:** briefs are grounded in live SERP and competitor analysis your agent just ran, not pasted-in fragments.
 - **Create → Publish:** drafts go straight to WordPress, Sanity, Webflow, Wix, or FraseCMS — and FraseCMS keeps the research attached to the page it produced.
