@@ -1,34 +1,37 @@
-# Frase MCP Server
+# @frase/mcp-server
+
+> **About this repository** — the public home of the Frase MCP server: documentation, registry metadata (server.json), changelog, and desktop-extension releases. The server is developed in the Frase private monorepo and ships as [@frase/mcp-server](https://www.npmjs.com/package/@frase/mcp-server) on npm; a hosted remote (OAuth) runs at https://next.frase.io/api/mcp. Issues and feature requests are welcome here.
 
 [![npm version](https://img.shields.io/npm/v/@frase/mcp-server.svg)](https://www.npmjs.com/package/@frase/mcp-server)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-**The content loop, run from your AI agent.** This MCP (Model Context Protocol) server connects Claude, Cursor, Windsurf, VS Code, or any MCP client to [Frase](https://www.frase.io/agents?utm_source=github&utm_medium=readme&utm_campaign=mcp-server), the content operating system for AI search. Frase runs the loop content teams use to win Google rankings and AI citations, and this server puts that loop in your agent's hands:
-
-- **Research** what ranks and why: live SERP analysis, competitor breakdowns, topic clusters
-- **Create** briefs and drafts grounded in that research, in your brand voice
-- **Publish** straight to WordPress, Sanity, Webflow, Wix, or FraseCMS
-- **Optimize** every page for Google rankings and AI citations (ChatGPT, Perplexity, Gemini, Google AI) together
-- **Track & fix**: audit sites for decay and cannibalization, watch where AI engines cite you (and where they cite competitors instead), and surface the pages that need attention next
-
-Why run it from an agent? Stacks that research in one tool, draft in another, and publish in a third lose context at every hop. Frase keeps research, drafts, scores, and publishing in one system — so your agent works with full context instead of copy-paste.
-
-**New to Frase?** The server connects to your Frase account. [Start a free 7-day trial](https://www.frase.io/?utm_source=github&utm_medium=readme&utm_campaign=mcp-server) (no credit card), then grab your API key from [Settings → API](https://next.frase.io/settings/api-keys).
+Use Claude to interact with your Frase account. This MCP (Model Context Protocol) server exposes Frase's API as tools that Claude can use to help you with SEO/GEO content creation, research, optimization, AI Visibility tracking, and much more. Works with both Claude Desktop and Claude Code.
 
 ## What is MCP?
 
 [Model Context Protocol (MCP)](https://modelcontextprotocol.io/) is an open standard that allows AI assistants like Claude to securely connect to external tools and data sources. This server implements MCP to give Claude access to your Frase account.
 
+## Hosted Remote Server (OAuth)
+
+Prefer zero setup? Frase runs a hosted MCP server at `https://next.frase.io/api/mcp` (streamable HTTP with OAuth). Clients that support remote MCP servers connect by URL and sign in with your Frase account in the browser. No API key, no local install, and updates ship automatically.
+
+- **Claude.ai / Claude Desktop:** add Frase from the Connectors directory, or add a custom connector with the URL above.
+- **Claude Code:**
+
+```bash
+claude mcp add --transport http frase https://next.frase.io/api/mcp
+```
+
+The options below run the server locally over stdio with an API key.
+
 ## Quick Start
 
 ### Option A: One-Click Install (Desktop Extension)
 
-> Desktop extension bundles are published on the [Releases](https://github.com/frase-io/mcp-server/releases) page. If no release is listed yet, use Option B or C below — same server, two commands.
-
-1. Download the latest `frase-x.x.x.mcpb` file from [Releases](https://github.com/frase-io/mcp-server/releases)
+1. Download the latest extension bundle: [frase-mcp.mcpb](https://next.frase.io/api/downloads/mcp-extension)
 2. Open Claude Desktop and go to **Settings**
 3. Drag the `.mcpb` file into the Settings window (or use **Install Extension**)
-4. Enter your Frase API key when prompted (get it from [Frase Settings](https://next.frase.io/settings/api-keys))
+4. Enter your Frase API key when prompted (get it from [Frase Settings](https://next.frase.io/settings/api))
 5. Done — Claude can now access your Frase account
 
 ### Option B: Claude Code (CLI)
@@ -45,7 +48,7 @@ Claude Code will automatically start the server when needed.
 
 #### 1. Get your API key
 
-Get your API key from [Frase Settings](https://next.frase.io/settings/api-keys).
+Get your API key from [Frase Settings](https://next.frase.io/settings/api).
 
 #### 2. Configure Claude Desktop
 
@@ -126,34 +129,6 @@ Add to your VS Code settings (`.vscode/settings.json`):
 }
 ```
 
-## Prompts you can try
-
-Once connected, ask your agent:
-
-- **Run the whole loop on one topic**
-  > "Research 'ai visibility tools' in Frase, build a brief from the top competitors, draft the article in our brand voice, and publish it as a draft to our FraseCMS site."
-
-- **See where AI cites you (and where it doesn't)**
-  > "Check our AI visibility for our main product queries. Which prompts cite us, which cite competitors, and what changed this week?"
-
-- **Find what's decaying before it costs traffic**
-  > "Audit frase.io for content decay and cannibalization, and rank the fixes by likely traffic impact."
-
-- **Turn a research session into a publishable draft**
-  > "Take my latest research session, generate an outline, and score the draft for both Google rankings and AI citations before I review it."
-
-Your agent stays in control of nothing it shouldn't: every write goes to your account, drafts stay drafts until you publish, and the API key never leaves your local config.
-
-## Why run Frase from an agent?
-
-Most content stacks research in one tool, write in another, optimize in a third, and publish in a fourth. Every hop loses context: the SERP data behind a brief, the reasoning behind an optimization, the research behind a page. Frase keeps the loop in one system, so an agent working through this server has the full picture at every step:
-
-- **Research → Create:** briefs are grounded in live SERP and competitor analysis your agent just ran, not pasted-in fragments.
-- **Create → Publish:** drafts go straight to WordPress, Sanity, Webflow, Wix, or FraseCMS — and FraseCMS keeps the research attached to the page it produced.
-- **Publish → Optimize → Fix:** published pages get scored for Google and AI citations, audited for decay, and tracked in AI answers, all through the same tools — so the next piece of work starts from what the last one learned.
-
-You review and approve; the agent does the legwork. That is the working model across Frase — agent-native by design, human-in-the-loop by default.
-
 ## Available Tools
 
 ### Sites
@@ -203,7 +178,7 @@ You review and approve; the agent does the legwork. That is the working model ac
 ### AI Visibility
 - `get_ai_visibility` - Get AI visibility overview metrics
 - `list_prompts` - List monitored AI prompts
-- `create_prompt` - Create a new monitored prompt
+- `create_prompt` - Create a new monitored prompt. Location defaults to the site's country when omitted (pass `site_id`); the same prompt can be tracked once per site.
 - `get_prompt` - Get prompt details with citations and results
 - `update_prompt` - Update a monitored prompt
 - `get_competitors` - Get AI visibility competitors
@@ -253,10 +228,10 @@ Here are your connected sites:
 | site_def | Product Site | product.example.com | No | Feb 20, 2024 |
 ```
 
-### Create a brief with auto-outline
+### Create a brief from research
 ```
 You: Create a brief about React performance optimization
-Claude: [Uses create_brief with generate_outline=true]
+Claude: [Runs start_research, waits for completion, then uses create_brief with the research_session_id]
 
 ## Brief Created
 
@@ -322,12 +297,6 @@ Pre-built workflows for common SEO tasks:
 | `content_pipeline` | Full autonomous content lifecycle: research, brief, write, optimize, publish |
 | `content_watchdog` | Monitor performance, fix ranking drops, re-optimize underperforming content |
 
-## Test mode
-
-Frase issues test API keys (`sk_test_...`) alongside live keys. A test key lets you — or your agent — dry-run the full integration without consuming credits or touching live content: run research, create briefs, score drafts, and exercise every tool call end-to-end, then swap to your `sk_live_` key when the workflow is proven. Get both key types from [Settings → API Keys](https://next.frase.io/settings/api-keys).
-
-If you are building an agent workflow, start with the test key. An agent that can rehearse a request before spending money completes integrations faster and makes fewer expensive mistakes.
-
 ## Configuration
 
 | Variable | Required | Description |
@@ -361,13 +330,39 @@ If you are building an agent workflow, start with the test key. An agent that ca
 
 ### Rate limiting
 
-The server automatically retries on rate limits with exponential backoff. If you're hitting limits frequently, consider spacing out your requests.
+The server retries on rate limits with exponential backoff, which resolves short per-minute bursts.
+
+Three limits apply independently: a per-minute burst, a sustained hourly ceiling, and a monthly request budget. Retrying only helps with the first — the `429` for the hourly ceiling carries a `Retry-After` of up to an hour, and retrying sooner cannot succeed. Check the error `code` to tell them apart: `rate_limit_exceeded` (burst, retry shortly), `hourly_limit_exceeded` (wait for `Retry-After`), `monthly_budget_exceeded` (upgrade or wait for the cycle).
 
 ## Support
 
 - [Frase Documentation](https://docs.frase.io)
 - [API Documentation](https://next.frase.io/api/docs)
 - [GitHub Issues](https://github.com/frase-io/mcp-server/issues)
+- Email: [support@frase.io](mailto:support@frase.io)
+
+## Privacy Policy
+
+**[Frase Privacy Policy](https://www.frase.io/company/privacy)**
+
+This server connects to your Frase account and sends the requests you make to
+the Frase API. It collects no data of its own beyond the tool-invocation
+telemetry described below, and it does not read your conversation history,
+files, or memory.
+
+- **What is collected** — for each tool call: your Frase organization ID and
+  user ID (or API key ID), the tool name, a SHA-256 hash of the arguments (not
+  the arguments themselves), the argument size in bytes, how long the call took,
+  whether it succeeded, an error type if it failed, and a timestamp. This is
+  used for auditing and reliability.
+- **What is not collected** — conversation content, prompts, or any argument
+  values in readable form.
+- **Storage and retention** — telemetry is stored against your Frase
+  organization and retained per the retention terms in the privacy policy above.
+- **Third-party sharing** — none beyond the subprocessors named in the privacy
+  policy.
+- **Deletion** — email [support@frase.io](mailto:support@frase.io) to request
+  deletion of your data.
 
 ## License
 

@@ -2,18 +2,24 @@
   "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
   "name": "io.frase/mcp-server",
   "title": "Frase SEO",
-  "description": "SEO, GEO & AI Visibility for AI agents \u2014 research, write, optimize, publish, and monitor content from any MCP client.",
-  "version": "0.6.1",
+  "description": "SEO, GEO & AI Visibility \u2014 research, write, optimize, publish & monitor content. 122 tools.",
+  "version": "0.9.2",
   "websiteUrl": "https://frase.io/agents",
   "repository": {
     "url": "https://github.com/frase-io/mcp-server.git",
     "source": "github"
   },
+  "remotes": [
+    {
+      "type": "streamable-http",
+      "url": "https://next.frase.io/api/mcp"
+    }
+  ],
   "packages": [
     {
       "registryType": "npm",
       "identifier": "@frase/mcp-server",
-      "version": "0.6.1",
+      "version": "0.9.2",
       "transport": {
         "type": "stdio"
       },
