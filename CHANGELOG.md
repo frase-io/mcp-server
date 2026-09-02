@@ -7,7 +7,23 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.9.3] - 2026-09-01
+
+### Added
+
+- `server.json` now advertises the hosted remote server (streamable HTTP with
+  OAuth) at `https://next.frase.io/api/mcp`, so the MCP registry and the
+  directories that ingest it list the remote alongside the npm/stdio package.
+- README documents the hosted remote, including one-command setup for
+  Claude Code.
+
 ### Changed
+
+- Public links point at live public destinations: repository and support moved
+  to `github.com/frase-io/mcp-server`, documentation to
+  `next.frase.io/api/docs`, and the desktop-extension download to the direct
+  distribution URL. A descriptor test now sweeps everything shipped for
+  private-repo references so these cannot regress.
 
 - `get_run_status` names the current step instead of numbering it:
   `Current Step: 3 (Generate Content)` rather than `Current Step: 3`. The name

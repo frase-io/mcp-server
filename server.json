@@ -3,7 +3,7 @@
   "name": "io.frase/mcp-server",
   "title": "Frase SEO",
   "description": "SEO, GEO & AI Visibility \u2014 research, write, optimize, publish & monitor content. 122 tools.",
-  "version": "0.9.2",
+  "version": "0.9.3",
   "websiteUrl": "https://frase.io/agents",
   "repository": {
     "url": "https://github.com/frase-io/mcp-server.git",
@@ -19,7 +19,7 @@
     {
       "registryType": "npm",
       "identifier": "@frase/mcp-server",
-      "version": "0.9.2",
+      "version": "0.9.3",
       "transport": {
         "type": "stdio"
       },
@@ -36,6 +36,12 @@
           "isRequired": false
         }
       ]
+    }
+  ],
+  "remotes": [
+    {
+      "type": "streamable-http",
+      "url": "https://next.frase.io/api/mcp"
     }
   ]
 }

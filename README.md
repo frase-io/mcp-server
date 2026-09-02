@@ -28,7 +28,7 @@ The options below run the server locally over stdio with an API key.
 
 ### Option A: One-Click Install (Desktop Extension)
 
-1. Download the latest extension bundle: [frase-mcp.mcpb](https://next.frase.io/api/downloads/mcp-extension)
+1. Download the latest extension bundle: [frase-mcp.mcpb](https://next.frase.io/api/downloads/mcp-extension) (sign in to Frase first)
 2. Open Claude Desktop and go to **Settings**
 3. Drag the `.mcpb` file into the Settings window (or use **Install Extension**)
 4. Enter your Frase API key when prompted (get it from [Frase Settings](https://next.frase.io/settings/api))
