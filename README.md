@@ -204,10 +204,11 @@ Add to your VS Code settings (`.vscode/settings.json`):
 
 ### Webhooks
 - `list_webhooks` - List configured webhooks
-- `create_webhook` - Create a new webhook
-- `get_webhook` - Get webhook details
-- `update_webhook` - Update a webhook
-- `delete_webhook` - Delete a webhook
+
+Managing webhooks is listed on the [hosted remote server](#hosted-remote-server-oauth) only —
+`write_webhook` (create/update), `get_webhook` and `delete_webhook`. They still
+run over stdio if your client calls them by name; only the listing differs.
+Connect to the hosted endpoint if you want an agent to discover them.
 
 ### CMS Publishing
 - `publish_content` - Publish content to Frase CMS or connected platforms

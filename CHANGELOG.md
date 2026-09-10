@@ -5,7 +5,50 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [Unreleased]
+## [0.10.0] - 2026-09-10
+
+### Added
+
+- `get_next_actions(site_id)`: what to do now on a site, one ranked list across
+  opportunities, site health, analytics and AI visibility (the Frase Home brief,
+  read from the new `GET /next-actions` route), each item naming the tool to call
+  next. `list_opportunities` is unchanged.
+
+- `import_content`: import an article written outside Frase so it can be scored
+  and optimized, without Frase generating it. Takes a markdown or HTML `body`,
+  or a `source_url` Frase fetches, and returns the content id plus the editor
+  URL. Costs one article credit. Set `target_keywords` or the SEO score is
+  capped — keyword coverage and placement are 35 of its 100 points.
+
+  Previously listed on the hosted remote only. A stdio agent could not see it,
+  and an agent that cannot see a tool does not report it missing — it
+  substitutes the nearest thing it can, which was `write_cms_post`. Users asking
+  for an import got a FraseCMS post instead, with no error to act on.
+
+### Changed
+
+- `import_cms_posts` names the post fields it accepts in one line ("as in
+  write_cms_post") instead of declaring each; the taxonomy fields stay declared
+  and validation is unchanged. This pays the stdio `tools/list` budget for the
+  new tool.
+
+- `write_webhook`, `get_webhook` and `delete_webhook` are listed on the hosted
+  remote only. They still RUN over stdio if called by name — withholding governs
+  the listing, not permission — and `list_webhooks` stays on the default
+  surface. Chosen on 90 days of production stdio traffic, where all three were
+  called zero times, including under the pre-rename names `create_webhook` and
+  `update_webhook`. `list_webhooks` saw 5 calls across 4 organizations, so
+  reading webhooks stays where it was and managing them moves.
+
+  This is what pays for `import_content`: 1,436 unused bytes for 975 used ones.
+  The stdio surface goes from 122 tools to 120, and its `tools/list` line from
+  63,005 to 62,544 bytes — headroom under the 62KB budget roughly doubles, from
+  483 bytes to 944.
+
+- Server `instructions` now name the hosted endpoint
+  (`https://next.frase.io/api/mcp`) and what is listed only there. Instructions
+  reach a client at connect time regardless of the tool list, which makes them
+  the only channel by which a withheld tool can be advertised at all.
 
 ## [0.9.3] - 2026-09-01
 
