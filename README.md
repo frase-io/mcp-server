@@ -151,6 +151,7 @@ Add to your VS Code settings (`.vscode/settings.json`):
 - `get_content_status` - Check content generation progress
 - `export_content` - Export content in JSON, HTML, or Markdown format
 - `regenerate_content` - Regenerate or improve content with optional instructions
+- `generate_hero_image` - Generate and attach an AI hero image to an existing article without regenerating it
 - `rescore_content` - Recalculate SEO, GEO, and EEAT scores for content
 
 ### Research

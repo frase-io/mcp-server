@@ -5,6 +5,16 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.11.0] - 2026-09-11
+
+### Added
+
+- `generate_hero_image(content_id, replace?)`: an AI hero image for an article
+  that already exists, attached as its featured image without regenerating the
+  body. Async; poll `get_content` until `featured_image` is set. Refuses when a
+  hero image is already there unless `replace` is true. One image credit on
+  success.
+
 ## [0.10.0] - 2026-09-10
 
 ### Added
