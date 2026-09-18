@@ -1,5 +1,11 @@
 # Changelog
 
+## Unreleased
+
+- Claude users now connect through the official Frase listing at https://claude.ai/customize/connectors/directory/frase.
+- Retired desktop extension bundles and their build/publish jobs. Existing installer URLs redirect to the connector directory. The npm server and hosted MCP endpoint remain supported.
+
+
 All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),

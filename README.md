@@ -1,6 +1,6 @@
 # @frase/mcp-server
 
-> **About this repository** — the public home of the Frase MCP server: documentation, registry metadata (server.json), changelog, and desktop-extension releases. The server is developed in the Frase private monorepo and ships as [@frase/mcp-server](https://www.npmjs.com/package/@frase/mcp-server) on npm; a hosted remote (OAuth) runs at https://next.frase.io/api/mcp. Issues and feature requests are welcome here.
+> **About this repository** — the public home of the Frase MCP server: documentation, registry metadata (server.json), changelog, and connector setup. The server is developed in the Frase private monorepo and ships as [@frase/mcp-server](https://www.npmjs.com/package/@frase/mcp-server) on npm; a hosted remote (OAuth) runs at https://next.frase.io/api/mcp. Issues and feature requests are welcome here.
 
 [![npm version](https://img.shields.io/npm/v/@frase/mcp-server.svg)](https://www.npmjs.com/package/@frase/mcp-server)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
@@ -15,7 +15,7 @@ Use Claude to interact with your Frase account. This MCP (Model Context Protocol
 
 Prefer zero setup? Frase runs a hosted MCP server at `https://next.frase.io/api/mcp` (streamable HTTP with OAuth). Clients that support remote MCP servers connect by URL and sign in with your Frase account in the browser. No API key, no local install, and updates ship automatically.
 
-- **Claude.ai / Claude Desktop:** add Frase from the Connectors directory, or add a custom connector with the URL above.
+- **Claude.ai / Claude Desktop:** [open the official Frase connector](https://claude.ai/customize/connectors/directory/frase) and connect your Frase account.
 - **Claude Code:**
 
 ```bash
@@ -26,15 +26,7 @@ The options below run the server locally over stdio with an API key.
 
 ## Quick Start
 
-### Option A: One-Click Install (Desktop Extension)
-
-1. Download the latest extension bundle: [frase-mcp.mcpb](https://next.frase.io/api/downloads/mcp-extension) (sign in to Frase first)
-2. Open Claude Desktop and go to **Settings**
-3. Drag the `.mcpb` file into the Settings window (or use **Install Extension**)
-4. Enter your Frase API key when prompted (get it from [Frase Settings](https://next.frase.io/settings/api))
-5. Done — Claude can now access your Frase account
-
-### Option B: Claude Code (CLI)
+### Claude Code: Claude Code (CLI)
 
 Add the Frase MCP server to Claude Code with a single command:
 
@@ -44,7 +36,7 @@ claude mcp add frase -- npx -y @frase/mcp-server --api-key sk_live_your_api_key_
 
 Claude Code will automatically start the server when needed.
 
-### Option C: Manual Setup (npx)
+### Manual Setup (npx, advanced)
 
 #### 1. Get your API key
 
@@ -75,7 +67,7 @@ Add this to your Claude Desktop config file:
 
 After saving the config, restart Claude Desktop. You should see "frase" in the MCP servers list.
 
-### Option D: Cursor
+### Cursor
 
 Add to your project's `.cursor/mcp.json`:
 
