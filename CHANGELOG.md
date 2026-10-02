@@ -1,15 +1,92 @@
 # Changelog
 
-## Unreleased
-
-- Claude users now connect through the official Frase listing at https://claude.ai/customize/connectors/directory/frase.
-- Retired desktop extension bundles and their build/publish jobs. Existing installer URLs redirect to the connector directory. The npm server and hosted MCP endpoint remain supported.
-
-
 All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+
+## Unreleased
+
+## [0.12.0] - 2026-09-29
+
+### Fixed
+
+- `get_competitors` no longer fails the whole call when a competitor has no
+  measured answer in the window: its average score shows `-` (the API returns
+  no average rather than 0 for such a competitor). A competitor added by name
+  only shows `-` for its domain, and a page past the last says so instead of
+  "no competitors found".
+- `get_crawler_logs` shows each crawl's date and time in UTC (the API's
+  `crawled_at`) instead of failing on every non-empty result, shows `-` for a
+  row with no bot name or status code, and says how many crawls the period
+  holds (the API returns 50 per page); a page past the last says so.
+- `get_crawler_logs` names each crawl's platform, lower-cases `platform` and
+  refuses a name the API does not know (the API ignores one and returns every
+  bot). `get_insights` does the same for `status`, where an unknown status
+  returned every insight as if filtered, and says when a status filter matches
+  none instead of "no insights available yet".
+- `get_ai_visibility` no longer asks for a `site_id` it was given: for a site
+  with no measured answer in the period, share of voice reads "no measured
+  answer in this period".
+- `get_alerts` honours `unread_only` and `limit` (it sent parameter names the API
+  ignores, so read alerts came back too and the limit was always 20), and shows
+  each alert's title and description (the Message column showed `-`).
+- `list_prompts` shows the brand each prompt tracks and no longer shows a Score
+  column the API never fills (use `get_prompt` for a prompt's results). It and
+  `get_insights` say when a page is past the last, instead of an impossible
+  range or "no insights available yet".
+- `create_prompt` and `update_prompt` send platform names in lower case, refuse
+  a name the API does not know (it dropped them without an error), and show
+  the platforms the API saved. `update_prompt` also refuses an empty list,
+  which stopped the prompt being checked at all (pause a prompt to stop it);
+  on `create_prompt` an empty list still means the default platforms. `update_prompt` also shows the frequency, which it
+  left out; `create_prompt` shows the brand the prompt tracks.
+- `create_atomization` and `batch_atomize` send the inputs the API reads. In
+  0.11.0 they sent `formats`/`tone` and `content_ids`, which the API rejects, so
+  every call failed. `create_atomization` now takes one `type` (replacing earlier
+  results of that type); `batch_atomize` takes one `content_id` and 1 to 4
+  `types`. A call with the old inputs gets an input error naming the new ones.
+- `get_research` keeps each content gap's proposed addition, reader question,
+  basis and source links, and each question's source URL.
+- `get_content` shows a hero image job's state (rendering, completed or failed,
+  with the reason) beside the featured image, so `generate_hero_image` can be
+  polled to an end; `generate_hero_image` returns its request ID and the image it
+  replaced.
+- `export_atomization` offers `text` instead of `csv` (the API never accepted
+  `csv`, so that export always failed).
+- `get_atomization` shows the atomization's type, generated content and assets;
+  0.11.0 read fields the API never sends and showed only the status. The
+  atomization tools take their content and atomization IDs as UUIDs.
+- `get_citation_formula` says "lower citation rates" for an active move with a
+  negative lift; it said "higher" whatever the sign.
+- `get_brief` tallies research facts as `from-research`; 0.11.0 called every one
+  `unverified`, from a check the pipeline never sets. It says how many sources
+  were checked against their page and how
+  many need attention (unsupported, discarded or awaiting a human check), and
+  lists the first three of those with their claims.
+
+### Added
+
+- `get_crawler_logs` takes `page` (50 crawls per page, newest first).
+- `set_source_decision` (hosted MCP only): vouch for a brief's source, remove it,
+  or swap in another page.
+
+### Changed
+
+- Descriptions of `start_research` (it no longer lists AI visibility among its
+  phases), `evaluate_rules` (results are not saved; `save_results` is ignored),
+  `get_delivery_token` (reveals the live credential without rotating it),
+  `get_citation_formula` (`flavor=full` lists moves in both directions) and the
+  atomization tools now match what they do.
+- Hosted MCP only (the npm server sends no tool hints): the read-only,
+  destructive, idempotent and open-world hints changed on 24 tools. Among them,
+  `get_delivery_token`, `analyze_serp`, `analyze_competitors`, `get_search_intent`
+  and `suggest_clusters` are read-only; `rescore_content` and the atomization
+  tools are destructive; the publish, CMS-write and webhook-write tools are no
+  longer marked idempotent.
+- Claude users now connect through the official Frase listing at https://claude.ai/customize/connectors/directory/frase.
+- Retired desktop extension bundles and their build/publish jobs. Existing installer URLs redirect to the connector directory. The npm server and hosted MCP endpoint remain supported.
+
 
 ## [0.11.0] - 2026-09-11
 
