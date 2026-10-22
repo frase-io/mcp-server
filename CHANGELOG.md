@@ -7,6 +7,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Unreleased
 
+### Changed
+
+- **BREAKING (2026-10-22):** `create_prompt` requires a site UUID (`site_id`).
+  Update installed MCP clients to the release containing this change and pass
+  the selected ID from `list_sites`. API callers using older tool versions
+  must also supply `site_id`; the server returns 400 when it is omitted.
+  Built-in workflows and bundled agent skills now pass the site explicitly.
+
 ## [0.12.0] - 2026-09-29
 
 ### Fixed
