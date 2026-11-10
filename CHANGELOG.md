@@ -9,6 +9,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+- `list_audits` with `site_id` now also lists that site's recurring (monthly)
+  audits, with their next run and report link. On Claude Desktop (stdio) the
+  dedicated `audit_repeats` tool is not listed, to stay under the tool-list
+  byte budget, so this is how a site's recurring audits are found there. The
+  server instructions now say recurring audits exist and name every tool that
+  is listed only on the hosted endpoint.
+- `start_audit` and `audit_page` now say in their descriptions that
+  `repeat: true` makes a monthly recurring audit kept in Frase, and the
+  `start_audit` reply says what was set up: the recurring audit with its
+  Audit page link, a warning when a repeat was asked for but could not be set
+  up, or "one-off". Other audit tool descriptions were shortened to keep the
+  stdio tool list under its byte budget.
+
 - **BREAKING (2026-10-22):** `create_prompt` requires a site UUID (`site_id`).
   Update installed MCP clients to the release containing this change and pass
   the selected ID from `list_sites`. API callers using older tool versions
