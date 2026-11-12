@@ -7,8 +7,50 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Unreleased
 
+### Added
+
+- `studio_page`: build the designed pages of a FraseCMS site. Its actions read
+  the caller's access, the site's design and frame, list and read pages, create
+  and edit drafts, make a preview link, send a page for review and read a
+  page's publish history. Listed on the hosted endpoint only, and there only
+  for an organization that has Studio; not listed on stdio.
+- `studio_publish`: publish, unpublish, roll back, move or delete a Studio
+  page, or set the homepage. Every action changes the live site, so a call
+  without `confirmed: true` sends nothing. Listed on the hosted endpoint only,
+  and there only for an organization that has Studio; not listed on stdio.
+- Both Studio tools send each write once. A write whose answer is lost is not
+  repeated, and the tool says whether repeating it by hand is safe.
+
+- `audit_repeats` has a third action, `run`: start a recurring audit now by
+  `repeat_id`, without waiting for its monthly date. The run belongs to that
+  recurring audit and its monthly date does not move. Hosted endpoint only,
+  like the rest of `audit_repeats`.
+
+### Fixed
+
+- `get_audit` now says where the audit's report is. A run of a recurring
+  audit carries that recurring audit's report link (`report_url`), which
+  before was only in the `audit_repeats` list, so an agent asked for "the
+  link to the report" found none. A one-off audit says it has no shareable
+  link and points to the Audit page. `export_audit` carries the link too,
+  in both formats.
+- `export_audit`: H1 and H2 counts were 0 for every page and the CSV Issues
+  column read "[object Object]"; both now come out as stored.
+
 ### Changed
 
+- Requires `@frase/core` 0.1.9, which adds a per-request `noRetry` option to
+  the API client: a request sent with it is sent once, whatever the failure.
+  The Studio tools use it for every write. Core 0.1.9 also carries what the
+  repository's core gained after 0.1.8 was published, measured by diffing the
+  published 0.1.8 package against the repository's: the `AuditRepeat` type and
+  its export, the fields `trigger`, `repeat_id`, `report_url` and
+  `repeat_status` on `Audit`, and the `zod` dependency moved from `^3.24.1` to
+  `^4.6.7`.
+- `start_audit` with `repeat: true` on a coverage and page limit that already
+  repeat no longer takes the existing recurring audit over. It is left as it
+  is, the audit that starts is a run of it, and the reply says so
+  ("Already repeats monthly").
 - `list_audits` with `site_id` now also lists that site's recurring (monthly)
   audits, with their next run and report link. On Claude Desktop (stdio) the
   dedicated `audit_repeats` tool is not listed, to stay under the tool-list
