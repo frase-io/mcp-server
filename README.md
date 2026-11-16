@@ -210,10 +210,12 @@ there only for an organization that has Studio. They are not listed on stdio.
 
 - `studio_page` - Read your access, the site's design and its frame; list, read,
   create and edit draft pages; make a preview link; send a page for review; read
-  a page's publish history
-- `studio_publish` - Publish, unpublish, roll back, move or delete a page, or set
-  the homepage. Every action changes the live site, so each call needs
-  `confirmed: true`, given only after the person has agreed
+  a page's publish history; list the site's image library, see which pages use
+  an image, upload an image and set an upload's alt text
+- `studio_publish` - Publish, unpublish, roll back, move or delete a page, set
+  the homepage, or remove an image no page uses from the site's image library.
+  Every action changes the live site or removes something for good, so each
+  call needs `confirmed: true`, given only after the person has agreed
 
 ### CMS Publishing
 - `publish_content` - Publish content to Frase CMS or connected platforms

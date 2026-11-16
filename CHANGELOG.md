@@ -20,6 +20,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   and there only for an organization that has Studio; not listed on stdio.
 - Both Studio tools send each write once. A write whose answer is lost is not
   repeated, and the tool says whether repeating it by hand is safe.
+- The site's image library through the Studio tools: `studio_page` gains
+  `images` (the library, or one image with the pages whose drafts use it),
+  `upload_image` (base64 data or a url, at most 2 MB) and `describe_image` (an
+  upload's alt text, which new placements take). `studio_publish` gains
+  `remove_image`, which takes an upload no page uses out of the library and,
+  like every `studio_publish` action, sends nothing without `confirmed: true`.
 
 - `audit_repeats` has a third action, `run`: start a recurring audit now by
   `repeat_id`, without waiting for its monthly date. The run belongs to that
