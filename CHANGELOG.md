@@ -26,6 +26,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   upload's alt text, which new placements take). `studio_publish` gains
   `remove_image`, which takes an upload no page uses out of the library and,
   like every `studio_publish` action, sends nothing without `confirmed: true`.
+- Collections, items, business facts and reviews through the Studio tools
+  (remote 0.2.14). `studio_page` gains `collections` (a site's collections),
+  `items` (a collection's items, paged), `facts` (the site's business facts),
+  `create_collection`, `create_item` (always a draft: it sends no status) and
+  `review_state` (a page's open review). `studio_publish` gains
+  `edit_collection`, `delete_collection`, `edit_item`, `delete_item`,
+  `save_fact`, `confirm_fact`, `remove_fact` and `request_changes` (send a
+  page's open review back), each sent only with `confirmed: true`, since a
+  live item or a fact changes for visitors at once. A fact write names the
+  fact as it was read (`expected`), and one refused because it changed shows
+  what it reads now.
+- The two Studio tools describe each action once, in the `action` argument,
+  as `name(arguments): what it does`.
 
 - `audit_repeats` has a third action, `run`: start a recurring audit now by
   `repeat_id`, without waiting for its monthly date. The run belongs to that

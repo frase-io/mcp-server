@@ -211,11 +211,15 @@ there only for an organization that has Studio. They are not listed on stdio.
 - `studio_page` - Read your access, the site's design and its frame; list, read,
   create and edit draft pages; make a preview link; send a page for review; read
   a page's publish history; list the site's image library, see which pages use
-  an image, upload an image and set an upload's alt text
+  an image, upload an image and set an upload's alt text; list collections and
+  their items, create a collection or a draft item; list the site's business
+  facts; read a page's open review
 - `studio_publish` - Publish, unpublish, roll back, move or delete a page, set
-  the homepage, or remove an image no page uses from the site's image library.
-  Every action changes the live site or removes something for good, so each
-  call needs `confirmed: true`, given only after the person has agreed
+  the homepage, or remove an image no page uses from the site's image library;
+  change or delete a collection or an item; save, confirm or remove a business
+  fact; send a page's open review back.
+  Each call needs `confirmed: true`, given only after the person has agreed,
+  since an action here can change the live site or remove something for good
 
 ### CMS Publishing
 - `publish_content` - Publish content to Frase CMS or connected platforms
