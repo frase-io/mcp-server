@@ -58,6 +58,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+- `create_prompt` takes a `prompt_text` of 1 to 1,000 characters, the same
+  rule as the app and the API. It used to refuse anything under 10, so a short
+  prompt such as "best crm" could be tracked in the app but not through MCP
+  (remote 0.2.17).
 - Requires `@frase/core` 0.1.9, which adds a per-request `noRetry` option to
   the API client: a request sent with it is sent once, whatever the failure.
   The Studio tools use it for every write. Core 0.1.9 also carries what the
